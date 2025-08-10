@@ -1,0 +1,67 @@
+/* src/components/views/PatientDetailView.css */
+
+.patient-detail-view {
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+.patient-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.patient-header h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.patient-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.patient-data-card,
+.patient-history-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.patient-data-card h3,
+.patient-history-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #007bff;
+}
+
+.patient-data-card p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.patient-data-card p strong {
+    color: #555;
+}

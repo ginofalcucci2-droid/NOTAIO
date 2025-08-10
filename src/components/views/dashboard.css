@@ -1,0 +1,35 @@
+.calendar-container {
+    /* Le ponemos un tope. Nunca será más ancho de 300 píxeles. */
+    max-width: 300px; 
+    
+    /* El truco universal para centrar un bloque con ancho definido */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Mantenemos el margen superior que ya teníamos */
+    margin-top: 1.5rem; 
+}
+
+/* Estilos para el calendario para que encaje con nuestro diseño */
+.react-calendar {
+    width: 100%;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-family: var(--font-body);
+}
+
+/* Estilo para el día de HOY */
+.react-calendar__tile--now {
+    background-color: rgba(137, 207, 240, 0.2); /* Un azul claro semitransparente */
+    font-weight: bold;
+}
+
+/* Estilo para el día que seleccionas */
+.react-calendar__tile--active {
+    background-color: var(--primary-dark) !important;
+    color: white;
+}
+
+.react-calendar__tile:hover {
+    background-color: var(--bg-light);
+}

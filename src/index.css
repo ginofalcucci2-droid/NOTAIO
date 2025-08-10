@@ -1,0 +1,16 @@
+/* src/index.css - VERSIÓN FINAL Y CORRECTA */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+    --primary-dark: #0A2240; --accent-blue: #89CFF0; --bg-light: #F0F2F5;
+    --bg-white: #FFFFFF; --text-dark: #333333; --text-on-primary: #FFFFFF;
+    --border-light: #E0E0E0; --bg-dark-main: #1F1F1F; --bg-dark-secondary: #2D2D2D;
+    --text-light: #F0F2F5; --text-muted: #9E9E9E; --border-dark: #424242;
+    --font-title: 'Montserrat', sans-serif; --font-body: 'Lato', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: var(--font-body); background-color: var(--bg-light); color: var(--text-dark); }

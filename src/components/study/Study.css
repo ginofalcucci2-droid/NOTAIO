@@ -1,0 +1,18 @@
+/* Lista de selección de pacientes */
+.study-select-patient-card { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.study-select-patient-card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+
+/* Contenedor del detalle del paciente (tema oscuro) */
+.study-patient-detail-container {
+    display: flex; flex-direction: column; 
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0; /* Ocupa todo el wrapper */
+    background-color: var(--bg-dark-main); color: var(--text-light);
+}
+.study-header { display: flex; align-items: center; padding: 1rem 1.5rem; background-color: var(--bg-dark-secondary); border-bottom: 1px solid var(--border-dark); }
+.study-header button { background: none; border: 1px solid var(--border-dark); color: var(--text-light); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; }
+.study-header button:hover { background-color: var(--border-dark); }
+.study-area-container { display: flex; flex-grow: 1; gap: 1.5rem; padding: 1.5rem; overflow: hidden; }
+.study-column { background-color: var(--bg-dark-secondary); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; overflow-y: auto; }
+.study-column.left { flex: 0 0 320px; }
+.study-column.center { flex: 1; }
+.study-column.right { flex: 0 0 320px; }

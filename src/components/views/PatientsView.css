@@ -1,0 +1,40 @@
+/* src/components/views/PatientsView.css */
+
+.patient-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.patient-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patient-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(137, 207, 240, 0.4);
+    cursor: pointer;
+}
+
+.patient-name {
+    font-family: var(--font-title);
+    margin-bottom: 0.5rem;
+}
+
+.patient-details {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.patient-arrow i {
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+}
