@@ -9,7 +9,7 @@ import AgendaView from './components/views/AgendaView.jsx';
 import './App.css';
 
 function App() {
-    const [activeView, setActiveView] = useState('patients'); // Empezamos en pacientes para probar
+    const [activeView, setActiveView] = useState('dashboard'); // Empezamos en pacientes para probar
     
     // NUEVO ESTADO: Este estado es específico para el Área de Estudio.
     // Guarda qué paciente queremos analizar.
