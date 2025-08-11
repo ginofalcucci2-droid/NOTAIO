@@ -1,31 +1,35 @@
 // src/components/views/PatientsView.jsx
 
-import React from 'react';
-import './PatientsView.css'; // Importamos un CSS que crearemos ahora
-import { patientsData } from '../../data/patients.js';
+import React, { useState } from 'react';
+import { patientsData } from '../../data/patients';
+import PatientDetailView from './PatientDetailView.jsx'; // Asegúrate de que el nombre del archivo es este
+import './Patients.css';
 
-function PatientsView({ onPatientSelect }) {
+function PatientsView({ onNavigateToStudy }) {
+    const [selectedPatient, setSelectedPatient] = useState(null);
+
+    // Si hemos seleccionado un paciente, mostramos su detalle
+    if (selectedPatient) {
+        return (
+            <PatientDetailView 
+                patient={selectedPatient} 
+                onBack={() => setSelectedPatient(null)}
+                // Le pasamos la función "puente" que recibimos de App.jsx
+                onGoToStudyArea={onNavigateToStudy}
+            />
+        );
+    }
+
+    // Si no, mostramos la lista para que el usuario elija
     return (
         <div className="content-view">
-            <div className="patient-list">
-                {patientsData.map((patient) => (
-                    // Cada tarjeta es un "botón". Usamos una etiqueta <a> por semántica.
-                    // En el futuro, onClick llevará al detalle del paciente.
-                    <div key={patient.id} className="patient-card" onClick={() => onPatientSelect(patient)}>
-                        <div className="patient-info">
-                            <h3 className="patient-name">{patient.name}</h3>
-                            <p className="patient-details">Edad: {patient.age}</p>
-                        </div>
-                        <div className="patient-contact">
-                            <p className="patient-details">DNI: {patient.dni}</p>
-                            <p className="patient-details">Teléfono: {patient.phone}</p>
-                        </div>
-                        <div className="patient-arrow">
-                            <i className="fas fa-chevron-right"></i>
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <h2>Mis Pacientes</h2>
+            {patientsData.map(patient => (
+                <div key={patient.id} className="card patient-card" onClick={() => setSelectedPatient(patient)}>
+                    <h4>{patient.nombre}</h4>
+                    <button className="btn">Ver Detalle</button>
+                </div>
+            ))}
         </div>
     );
 }

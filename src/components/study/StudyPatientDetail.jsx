@@ -9,7 +9,7 @@ function StudyPatientDetail({ patient, onBack }) {
             </div>
             <div className="study-area-container">
                 <div className="study-column left">
-                    <h2>{patient.name}</h2>
+                    <h2>{patient.nombre}</h2>
                     <p style={{ color: 'var(--text-muted)' }}>Fuentes de Sesión</p>
                     {/* Aquí iría la lista de sesiones */}
                 </div>

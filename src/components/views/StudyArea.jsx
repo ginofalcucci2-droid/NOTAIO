@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import StudyPatientList from '../study/StudyPatientList';
 import StudyPatientDetail from '../study/StudyPatientDetail';
 
-function StudyArea() {
-    // Este estado controla si vemos la lista o el detalle de un paciente
-    const [selectedPatient, setSelectedPatient] = useState(null);
-
-    // Si no hay paciente seleccionado, mostramos la lista
-    if (!selectedPatient) {
-        return <StudyPatientList onPatientSelect={setSelectedPatient} />;
+// NUEVOS PROPS: `patient` para recibir el paciente a estudiar
+// y `onPatientSelect` para comunicar la selección hacia arriba
+function StudyArea({ patient, onPatientSelect }) {
+    // Si ya tenemos un paciente, mostramos su detalle directamente
+    if (patient) {
+        return (
+            <StudyPatientDetail 
+                patient={patient} 
+                // Al volver, le decimos a App.jsx que ya no hay paciente seleccionado
+                onBack={() => onPatientSelect(null)} 
+            />
+        );
     }
 
-    // Si hay un paciente seleccionado, mostramos su detalle
-    return <StudyPatientDetail patient={selectedPatient} onBack={() => setSelectedPatient(null)} />;
+    // Si no, mostramos la lista para que el usuario elija
+    return <StudyPatientList onPatientSelect={onPatientSelect} />;
 }
+
 export default StudyArea;
