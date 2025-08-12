@@ -23,10 +23,12 @@ function App() {
     const [isLoginView, setIsLoginView] = useState(true);
 
     // --- LÓGICA DE AUTENTICACIÓN ---
-    const handleLoginSuccess = (token) => {
-        localStorage.setItem('authToken', token); // Guardamos el token en el navegador
-        setAuthToken(token); // Actualizamos el estado para que la app reaccione
-    };
+    // Dentro de App.jsx
+const handleLoginSuccess = (token) => {
+    console.log("LOGIN EXITOSO! Recibido token:", token); // <-- AÑADE ESTA LÍNEA
+    localStorage.setItem('authToken', token);
+    setAuthToken(token);
+};
 
     const handleLogout = () => {
         localStorage.removeItem('authToken'); // Borramos el token
