@@ -1,4 +1,4 @@
-// src/components/views/LoginView.jsx
+// src/components/views/LoginView.jsx - VERSIÓN CONECTADA
 
 import React, { useState } from 'react';
 import './Auth.css';
@@ -20,18 +20,11 @@ function LoginView({ onLoginSuccess, onSwitchToRegister }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        
-        // ¡ATENCIÓN! Esta parte fallará hasta que construyamos el endpoint /token en el backend.
-        // Lo dejamos preparado para el futuro.
-        alert('Funcionalidad de Login en construcción. Redirigiendo...');
-        // onLoginSuccess("un_token_falso_para_probar");
-        
-        // El código real se parecerá a esto:
-        /*
+
         try {
             // FastAPI espera los datos del login en un formato especial (form data)
             const formBody = new URLSearchParams();
-            formBody.append('username', formData.email);
+            formBody.append('username', formData.email); // El 'username' para la API es nuestro 'email'
             formBody.append('password', formData.password);
 
             const response = await fetch('http://127.0.0.1:8000/token', {
@@ -42,15 +35,15 @@ function LoginView({ onLoginSuccess, onSwitchToRegister }) {
 
             if (response.ok) {
                 const data = await response.json();
-                onLoginSuccess(data.access_token); // Enviamos el token al componente padre
+                onLoginSuccess(data.access_token); // ¡Enviamos el token recibido al componente App!
             } else {
+                // Si el backend devuelve un error (ej. 401 Unauthorized)
                 const errorData = await response.json();
                 setError(errorData.detail || 'Email o contraseña incorrectos.');
             }
         } catch (err) {
-            setError('No se pudo conectar con el servidor.');
+            setError('No se pudo conectar con el servidor. ¿Está encendido?');
         }
-        */
     };
 
     return (
