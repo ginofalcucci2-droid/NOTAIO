@@ -1,3 +1,5 @@
+// src/components/Sidebar.jsx - VERSIÓN MODIFICADA
+
 import React from 'react';
 import './Sidebar.css';
 
@@ -7,6 +9,8 @@ const navItems = [
     { id: 'patients', icon: 'fas fa-users', text: 'Mis Pacientes' },
     { id: 'study-area', icon: 'fas fa-microscope', text: 'Área de Estudio' },
     
+    // ----> ESTA ES LA LÍNEA QUE DEBE AÑADIR <----
+    { id: 'profile', icon: 'fas fa-user-cog', text: 'Mi Perfil' }
 ];
 
 function Sidebar({ activeView, setActiveView }) {

@@ -1,4 +1,4 @@
-// src/App.jsx - VERSIÓN CON LÓGICA DE AUTENTICACIÓN
+// src/App.jsx - VERSIÓN FINAL CON PERFIL INTEGRADO
 
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar.jsx';
@@ -8,6 +8,7 @@ import StudyArea from './components/views/StudyArea.jsx';
 import AgendaView from './components/views/AgendaView.jsx';
 import LoginView from './components/views/LoginView.jsx';
 import RegisterView from './components/views/RegisterView.jsx';
+import ProfileView from './components/views/ProfileView.jsx'; // <-- 1. IMPORTAR LA NUEVA VISTA
 import './App.css';
 
 function App() {
@@ -15,31 +16,29 @@ function App() {
     const [activeView, setActiveView] = useState('dashboard');
     const [studyPatient, setStudyPatient] = useState(null);
     
-    // ESTADO DE AUTENTICACIÓN: El "guardia de seguridad"
-    // Buscamos en localStorage si ya existe un token guardado.
+    // ESTADO DE AUTENTICACIÓN
     const [authToken, setAuthToken] = useState(localStorage.getItem('authToken'));
     
-    // ESTADO PARA LA VISTA DE AUTH: Nos permite cambiar entre Login y Registro
+    // ESTADO PARA LA VISTA DE AUTH
     const [isLoginView, setIsLoginView] = useState(true);
 
     // --- LÓGICA DE AUTENTICACIÓN ---
-    // Dentro de App.jsx
-const handleLoginSuccess = (token) => {
-    console.log("LOGIN EXITOSO! Recibido token:", token); // <-- AÑADE ESTA LÍNEA
-    localStorage.setItem('authToken', token);
-    setAuthToken(token);
-};
+    const handleLoginSuccess = (token) => {
+        console.log("LOGIN EXITOSO! Recibido token:", token);
+        localStorage.setItem('authToken', token);
+        setAuthToken(token);
+    };
 
     const handleLogout = () => {
-        localStorage.removeItem('authToken'); // Borramos el token
+        localStorage.removeItem('authToken');
         setAuthToken(null);
     };
 
     const handleRegisterSuccess = () => {
-        setIsLoginView(true); // Después de un registro exitoso, mostramos el Login
+        setIsLoginView(true);
     };
     
-    // --- NAVEGACIÓN DENTRO DE LA APP (una vez logueado) ---
+    // --- NAVEGACIÓN DENTRO DE LA APP ---
     const handleNavigate = (viewId) => {
         setActiveView(viewId);
         setStudyPatient(null);
@@ -52,7 +51,6 @@ const handleLoginSuccess = (token) => {
 
     // --- RENDERIZADO CONDICIONAL ---
 
-    // Si NO hay token de autenticación, mostramos las vistas de Login/Registro
     if (!authToken) {
         if (isLoginView) {
             return (
@@ -71,7 +69,6 @@ const handleLoginSuccess = (token) => {
         }
     }
 
-    // Si SÍ hay token, mostramos la aplicación principal
     const renderMainView = () => {
         switch (activeView) {
             case 'dashboard':
@@ -82,6 +79,11 @@ const handleLoginSuccess = (token) => {
                 return <PatientsView onNavigateToStudy={handleNavigateToStudy} />;
             case 'study-area':
                 return <StudyArea patient={studyPatient} onPatientSelect={setStudyPatient} />;
+            
+            // <-- 2. AÑADIR EL CASE PARA EL PERFIL -->
+            case 'profile':
+                return <ProfileView />;
+                
             default:
                 return <div className="card"><h2>{activeView.replace('-', ' ')}</h2></div>;
         }
@@ -92,7 +94,6 @@ const handleLoginSuccess = (token) => {
             <Sidebar activeView={activeView} setActiveView={handleNavigate} />
             <main className="main-content">
                 <header className="main-header">
-                    {/* Podríamos añadir un botón de Logout aquí */}
                     <h1>{activeView.replace('-', ' ')}</h1>
                     <button onClick={handleLogout} className="btn-logout">Cerrar Sesión</button>
                 </header>
